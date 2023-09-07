@@ -15,10 +15,13 @@ object LampManager {
 
     /**
      * Get the command handler for your plugin, registered with all of the wrappers extensions.
+     *
+     * @return the same [BukkitCommandHandler] (for conciseness)
      */
-    fun setup(plugin: JavaPlugin, handler: BukkitCommandHandler) {
+    fun setup(plugin: JavaPlugin, handler: BukkitCommandHandler): BukkitCommandHandler {
         this.plugin = plugin
         registerParameterValidators(handler)
+        return handler
     }
 
     /**
