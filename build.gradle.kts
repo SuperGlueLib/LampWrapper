@@ -24,3 +24,11 @@ dependencies {
 kotlin {
     jvmToolchain(17)
 }
+
+publishing.publications.create<MavenPublication>("maven") {
+    groupId = "com.github.supergluelib"
+    artifactId = "SuperTeamsAPI"
+    version = version
+
+    from(components["java"])
+}
