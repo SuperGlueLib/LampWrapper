@@ -36,7 +36,7 @@ object LampManager {
      *  This example registers a player validator called "NotSelf" which ensures the player does not
      *  specify themselves.
      */
-    private fun <T, A: Annotation> BukkitCommandHandler.registerAnnotationParameterValidator(
+    fun <T, A: Annotation> BukkitCommandHandler.registerAnnotationParameterValidator(
         constraintClass: Class<T>,
         annotationClass: Class<A>,
         errorMessage: String,
