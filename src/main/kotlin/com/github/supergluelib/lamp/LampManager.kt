@@ -26,6 +26,15 @@ object LampManager {
 
     /**
      * @param condition Whether the parameter is valid, i.e. if this returns false, an error will be thrown.
+     *
+     * Example Implementation:
+     *  ```
+     *  handler.registerAnnotationParameterValidator(Player::class.java, NotSelf::class.java, "You cannot specify yourself") {
+     *      actor, _, player -> actor.uniqueId != player.uniqueId
+     *  }
+     *  ```
+     *  This example registers a player validator called "NotSelf" which ensures the player does not
+     *  specify themselves.
      */
     private fun <T, A: Annotation> BukkitCommandHandler.registerAnnotationParameterValidator(
         constraintClass: Class<T>,
