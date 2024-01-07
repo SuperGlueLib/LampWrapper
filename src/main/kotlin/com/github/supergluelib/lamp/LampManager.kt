@@ -1,5 +1,6 @@
 package com.github.supergluelib.lamp
 
+import com.github.supergluelib.lamp.annotations.NotFullInventory
 import com.github.supergluelib.lamp.annotations.NotSelf
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
@@ -51,6 +52,10 @@ object LampManager {
     private fun registerParameterValidators(handler: BukkitCommandHandler) {
         handler.registerAnnotationParameterValidator(Player::class.java, NotSelf::class.java, "You cannot specify yourself") {
               actor, _, player -> actor.uniqueId != player.uniqueId
+        }
+
+        handler.registerAnnotationParameterValidator(Player::class.java, NotFullInventory::class.java, "The target's inventory is full") {
+            _, _, target -> target.inventory.firstEmpty() != -1
         }
     }
 
